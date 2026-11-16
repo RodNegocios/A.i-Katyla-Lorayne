@@ -35,6 +35,8 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      - name: Validate image mapping and framing
+        run: npm run test:layout
       - name: Build and validate production files
         run: npm run build
       - name: Publish compiled files at repository root

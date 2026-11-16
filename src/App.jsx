@@ -6,7 +6,7 @@ import './styles.css';
 
 const media = (name) => import.meta.env.BASE_URL + 'media/' + name;
 const heroPhoto = media('hero-kitchen.webp');
-const studioPhoto = media('portrait.png');
+const studioPhoto = media('ambiente-02.png'); // Retrato da Katyla (blusa branca)
 const whatsapp = 'https://wa.me/5565996922813?text=' + encodeURIComponent('Olá, Katyla! Gostaria de conversar sobre um projeto.');
 const instagram = 'https://www.instagram.com/katylaarquiteta/';
 
@@ -35,9 +35,9 @@ const chapters = [
 ];
 
 const services = [
-  { image: media('ambiente-01.png'), label: 'Projetos arquitetônicos', alt: 'Referência visual do acervo de arquitetura', position: 'center center' },
-  { image: media('ambiente-02.png'), label: 'Design de interiores', alt: 'Referência visual do acervo de interiores', position: 'center center' },
-  { image: media('ambiente-03.png'), label: 'Consultorias', alt: 'Referência visual do acervo de projetos', position: 'center center' }
+  { image: media('ambiente-01.png'), label: 'Projetos arquitetônicos', alt: 'Retrato do acervo editorial de arquitetura', fit: 'contain', position: 'center center' },
+  { image: media('portrait.png'), label: 'Design de interiores', alt: 'Projeto de cozinha integrada com marcenaria verde e mesa de madeira', fit: 'cover', position: 'center center' },
+  { image: media('ambiente-03.png'), label: 'Consultorias', alt: 'Referência visual do acervo de projetos', fit: 'cover', position: 'center center' }
 ];
 
 function ArrowIcon({ diagonal = false }) {
@@ -195,7 +195,7 @@ export default function App() {
 
         <section className="about section" aria-labelledby="about-title">
           <div className="about__quote"><span className="eyebrow">04 — CONHEÇA A ARQUITETA</span><h2 id="about-title">Prazer,<br/>sou <em>Katyla.</em></h2><p>Sou arquiteta formada pela Universidade do Estado de Mato Grosso (Unemat). Acredito em projetos que valorizam a essência, os sentimentos e as necessidades de cada pessoa.</p><a className="text-link" href={instagram} target="_blank" rel="noreferrer">Acompanhe meu dia a dia <ArrowIcon diagonal /></a></div>
-          <div className="about__image"><img src={studioPhoto} alt="Imagem do acervo de projetos de Katyla Lorayne" loading="lazy" /><div className="about__stamp">ARQUITETURA<br/>COM ESSÊNCIA</div></div>
+          <div className="about__image"><img src={studioPhoto} alt="Retrato da arquiteta Katyla Lorayne, com blusa branca" loading="lazy" /><div className="about__stamp">ARQUITETURA<br/>COM ESSÊNCIA</div></div>
         </section>
 
         <section className="contact section" id="contato" aria-labelledby="contact-title">

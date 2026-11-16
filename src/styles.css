@@ -239,3 +239,15 @@ img,video,svg{display:block;max-width:100%}
  .chapter-card__video-frame{height:50%}
  .chapter-card__content h3{font-size:37px}
 }
+
+
+/* Image framing refinement: display Katyla's full portrait without face crop. */
+.about__image { background: #b7bdc0; }
+.about__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  filter: saturate(.97);
+}

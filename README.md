@@ -48,3 +48,11 @@ Dados e contatos baseados no arquivo `Informações` do repositório. A escolha 
 
 Os componentes React Bits em `src/components` foram mantidos do projeto anterior e estão sujeitos aos termos de licença de seu projeto de origem.
 
+
+
+## Galeria e enquadramento (novembro de 2026)
+
+- Na seção **Seu espaço, sua história**, o card **Design de interiores** agora mostra o projeto de cozinha que estava na seção da arquiteta (`public/media/portrait.png`).
+- Na seção **Prazer, sou Katyla**, o retrato de blusa branca vem do acervo já existente (`public/media/ambiente-02.png`). Dessa forma, a imagem original de alta resolução é reutilizada, sem duplicar arquivos nem manter as setas da captura de tela enviada.
+- Fotografias de pessoas na galeria usam `object-fit: contain`, com uma cópia desfocada atrás para preencher a moldura; imagens de projetos permanecem em `cover`. A foto da arquiteta também usa `contain`, evitando cortes de rosto.
+- Verifique alterações com `npm run test:layout` e `npm run build`; o GitHub Actions deve executar ambos antes de publicar.
