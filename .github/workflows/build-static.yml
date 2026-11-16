@@ -35,6 +35,8 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      - name: Restore full-resolution hero image
+        run: node scripts/restore-hero.mjs
       - name: Validate image mapping and framing
         run: npm run test:layout
       - name: Build and validate production files
@@ -48,7 +50,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A index.html assets media
+          git add -A index.html assets media public/media/hero-kitchen-hd.avif
           if ! git diff --cached --quiet; then
             git commit -m "build: publish Hostinger static files [skip ci]"
             git push origin "HEAD:${GITHUB_REF_NAME}"

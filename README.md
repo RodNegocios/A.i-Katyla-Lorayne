@@ -56,3 +56,11 @@ Os componentes React Bits em `src/components` foram mantidos do projeto anterior
 - Na seção **Prazer, sou Katyla**, o retrato de blusa branca vem do acervo já existente (`public/media/ambiente-02.png`). Dessa forma, a imagem original de alta resolução é reutilizada, sem duplicar arquivos nem manter as setas da captura de tela enviada.
 - Fotografias de pessoas na galeria usam `object-fit: contain`, com uma cópia desfocada atrás para preencher a moldura; imagens de projetos permanecem em `cover`. A foto da arquiteta também usa `contain`, evitando cortes de rosto.
 - Verifique alterações com `npm run test:layout` e `npm run build`; o GitHub Actions deve executar ambos antes de publicar.
+
+
+## Hero em alta definição (1881 × 836)
+
+O arquivo original enviado da cozinha verde é convertido para AVIF na resolução de 1881 × 836 pixels, preservando o enquadramento e reduzindo o download. A hero usa `/media/hero-kitchen-hd.avif`, e não a miniatura anterior `hero-kitchen.webp` (240px).
+
+Para manter o binário reproduzível no GitHub, o original otimizado fica codificado em 5 partes na pasta `.github/hero-image-parts`. O script `node scripts/restore-hero.mjs` monta o AVIF com validação SHA-256 **antes dos testes e do build no GitHub Actions**. A imagem final também é versionada em `public/media` e `media`; qualquer novo build poderá regenerá-la.
+

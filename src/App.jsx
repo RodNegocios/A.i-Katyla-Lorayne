@@ -5,7 +5,7 @@ import AccordionGallery from './components/AccordionGallery/AccordionGallery.jsx
 import './styles.css';
 
 const media = (name) => import.meta.env.BASE_URL + 'media/' + name;
-const heroPhoto = media('hero-kitchen.webp');
+const heroPhoto = media('hero-kitchen-hd.avif');
 const studioPhoto = media('ambiente-02.png'); // Retrato da Katyla (blusa branca)
 const whatsapp = 'https://wa.me/5565996922813?text=' + encodeURIComponent('Olá, Katyla! Gostaria de conversar sobre um projeto.');
 const instagram = 'https://www.instagram.com/katylaarquiteta/';

@@ -29,3 +29,12 @@ test('Both production media assets have nonzero size', () => {
     assert.ok(statSync(path).size > 10000, 'Suspicious media size: ' + name);
   }
 });
+
+test('Hero background is the supplied high-resolution kitchen image', () => {
+  assert.match(app, /const heroPhoto = media\('hero-kitchen-hd\.avif'\)/);
+  const photo = new URL('../public/media/hero-kitchen-hd.avif', import.meta.url);
+  assert.ok(existsSync(photo), 'High-resolution hero was not reconstructed');
+  assert.equal(statSync(photo).size, 39041, 'Hero image must not be replaced by a blurred thumbnail');
+  const bytes = readFileSync(photo);
+  assert.equal(bytes.subarray(4, 12).toString('ascii'), 'ftypavif', 'Invalid AVIF image');
+});
