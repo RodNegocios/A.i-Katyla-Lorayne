@@ -1,0 +1,55 @@
+name: Build and publish Hostinger-ready website
+
+on:
+  push:
+    branches:
+      - main
+      - feat/katyla-scroll-stack-tech-text-accordion
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'index.dev.html'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.js'
+      - 'scripts/**'
+      - '.github/workflows/build-static.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hostinger-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out application
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build and validate production files
+        run: npm run build
+      - name: Publish compiled files at repository root
+        run: |
+          rm -rf assets media
+          cp -R dist/assets ./assets
+          cp -R dist/media ./media
+          cp dist/index.html ./index.html
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A index.html assets media
+          if ! git diff --cached --quiet; then
+            git commit -m "build: publish Hostinger static files [skip ci]"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          else
+            echo "Compiled site is up-to-date."
+          fi
