@@ -5,6 +5,8 @@ import AccordionGallery from './components/AccordionGallery/AccordionGallery.jsx
 import './styles.css';
 
 const media = (name) => import.meta.env.BASE_URL + 'media/' + name;
+const heroPhoto = media('hero-kitchen.webp');
+const studioPhoto = media('portrait.png');
 const whatsapp = 'https://wa.me/5565996922813?text=' + encodeURIComponent('Olá, Katyla! Gostaria de conversar sobre um projeto.');
 const instagram = 'https://www.instagram.com/katylaarquiteta/';
 
@@ -33,9 +35,9 @@ const chapters = [
 ];
 
 const services = [
-  { image: media('ambiente-01.png'), label: 'Projetos arquitetônicos', alt: 'Referência visual do acervo de arquitetura' },
-  { image: media('ambiente-02.png'), label: 'Design de interiores', alt: 'Referência visual do acervo de interiores' },
-  { image: media('ambiente-03.png'), label: 'Consultorias', alt: 'Referência visual do acervo de projetos' }
+  { image: media('ambiente-01.png'), label: 'Projetos arquitetônicos', alt: 'Referência visual do acervo de arquitetura', position: 'center center' },
+  { image: media('ambiente-02.png'), label: 'Design de interiores', alt: 'Referência visual do acervo de interiores', position: 'center center' },
+  { image: media('ambiente-03.png'), label: 'Consultorias', alt: 'Referência visual do acervo de projetos', position: 'center center' }
 ];
 
 function ArrowIcon({ diagonal = false }) {
@@ -140,14 +142,14 @@ export default function App() {
           <div className="hero__stage">
             <div className="hero__halo" aria-hidden="true" />
             <div className="hero__name hero__name--back" aria-hidden="true">
-              <TechText text="KATYLA" fontFamily="Georgia, serif" fontWeight={500} fontSize={nameSize} letterSpacing={-0.065} color="#9f9588" accentColor="#746656" labels={false} draggable={false} guides={false} specks={5} sweep={!reduced} intro={reduced ? 'none' : 'fade'} introDuration={1.6} />
+              <TechText text="KATYLA" fontFamily="Georgia, serif" fontWeight={500} fontSize={nameSize} letterSpacing={-0.065} color="#fff9ed" accentColor="#e4d3b8" labels={false} draggable={false} guides={false} specks={5} sweep={!reduced} intro={reduced ? 'none' : 'fade'} introDuration={1.6} />
             </div>
             <div className="hero__portrait">
-              <img src={media('portrait.png')} alt="Imagem do acervo de Katyla Lorayne" fetchPriority="high" />
+              <img src={heroPhoto} alt="Ambiente integrado com cozinha verde e mesa de madeira, projeto de interiores" fetchPriority="high" />
               <span className="hero__portrait-fade" aria-hidden="true" />
             </div>
             <div className="hero__name hero__name--front" aria-hidden="true">
-              <TechText text="LORAYNE" fontFamily="Georgia, serif" fontWeight={500} fontSize={nameSize * 0.92} letterSpacing={-0.065} color="#242321" accentColor="#786d61" labels={false} draggable={false} guides={false} specks={5} sweep={!reduced} intro={reduced ? 'none' : 'fade'} introDuration={1.9} />
+              <TechText text="LORAYNE" fontFamily="Georgia, serif" fontWeight={500} fontSize={nameSize * 0.92} letterSpacing={-0.065} color="#fff7e9" accentColor="#e5c9a1" labels={false} draggable={false} guides={false} specks={5} sweep={!reduced} intro={reduced ? 'none' : 'fade'} introDuration={1.9} />
             </div>
           </div>
           <div className="hero__outro">
@@ -167,7 +169,7 @@ export default function App() {
             <ScrollStack useWindowScroll itemDistance={112} itemStackDistance={22} stackPosition="12%" itemScale={0.045} baseScale={0.85} dimAmount={0.12} holdDistance={180} smoothScroll={false} snap={false}>
               {chapters.map((chapter) => (
                 <ScrollStackItem key={chapter.number} itemClassName="chapter-card">
-                  <div className="chapter-card__media"><AmbientVideo src={chapter.video} poster={chapter.poster} enabled={motionEnabled} reduced={reduced} /><div className="chapter-card__gradient" /></div>
+                  <div className="chapter-card__media"><img className="chapter-card__backdrop" src={chapter.poster} alt="" loading="lazy" /><div className="chapter-card__gradient" /><div className="chapter-card__video-frame"><AmbientVideo src={chapter.video} poster={chapter.poster} enabled={motionEnabled} reduced={reduced} /></div></div>
                   <div className="chapter-card__top"><span>CAPÍTULO {chapter.number}</span><span>KATYLA LORAYNE</span></div>
                   <div className="chapter-card__content"><p>{chapter.subtitle}</p><h3>{chapter.title}</h3></div>
                   <span className="chapter-card__number" aria-hidden="true">{chapter.number}</span>
@@ -193,7 +195,7 @@ export default function App() {
 
         <section className="about section" aria-labelledby="about-title">
           <div className="about__quote"><span className="eyebrow">04 — CONHEÇA A ARQUITETA</span><h2 id="about-title">Prazer,<br/>sou <em>Katyla.</em></h2><p>Sou arquiteta formada pela Universidade do Estado de Mato Grosso (Unemat). Acredito em projetos que valorizam a essência, os sentimentos e as necessidades de cada pessoa.</p><a className="text-link" href={instagram} target="_blank" rel="noreferrer">Acompanhe meu dia a dia <ArrowIcon diagonal /></a></div>
-          <div className="about__image"><img src={media('portrait.png')} alt="Imagem do acervo de Katyla Lorayne" loading="lazy" /><div className="about__stamp">ARQUITETURA<br/>COM ESSÊNCIA</div></div>
+          <div className="about__image"><img src={studioPhoto} alt="Imagem do acervo de projetos de Katyla Lorayne" loading="lazy" /><div className="about__stamp">ARQUITETURA<br/>COM ESSÊNCIA</div></div>
         </section>
 
         <section className="contact section" id="contato" aria-labelledby="contact-title">

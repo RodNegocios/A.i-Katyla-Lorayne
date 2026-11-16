@@ -143,3 +143,6 @@
     will-change: auto;
   }
 }
+
+/* Center media subjects even while the accordion changes panel widths. */
+.ag-panel__media img{object-position:50% 50%;}
